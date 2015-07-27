@@ -1,0 +1,40 @@
+- defaults:
+    name: global
+    project-type: freestyle
+    concurrent: false
+    disabled: false
+    block-downstream: false
+    block-upstream: false
+    logrotate:
+      daysToKeep: -1
+      numToKeep: 200
+      artifactDaysToKeep: -1
+      artifactNumToKeep: -1
+
+- builder:
+    name: setup-jail
+    builders:
+      - shell: sh freebsd-ci/scripts/jail/setup.sh
+
+- builder:
+    name: execute-in-jail
+    builders:
+      - shell: sh freebsd-ci/scripts/jail/execute.sh
+
+- publisher:
+    name: clean-jail
+    publishers:
+      - conditional-publisher:
+          - condition-kind: shell
+            condition-command: sh freebsd-ci/scripts/jail/setup.sh
+            action: []
+
+- job:
+    defaults: global
+    name: test-jjb
+    node: jailer
+    builders:
+      - setup-jail
+      - execute-in-jail
+    publishers:
+      - clean-jail
