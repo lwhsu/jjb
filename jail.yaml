@@ -24,10 +24,9 @@
 - publisher:
     name: clean-jail
     publishers:
-      - conditional-publisher:
-          - condition-kind: shell
-            condition-command: sh freebsd-ci/scripts/jail/setup.sh
-            action: []
+      - post-tasks:
+          - task:
+            script: sh freebsd-ci/scripts/jail/clean.sh
 
 - job:
     defaults: global
