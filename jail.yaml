@@ -46,6 +46,8 @@
     node: jailer
     scm:
       - freebsd-src-head
+    triggers:
+      - pollscm: H H/2 * * *
     builders:
       - setup-jail
       - execute-in-jail
