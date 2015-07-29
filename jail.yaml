@@ -40,6 +40,52 @@
           - task:
             script: sh freebsd-ci/scripts/jail/clean.sh
 
+- publisher:
+    name: mail-build
+    publishers:
+      - email-ext:
+          recipients: lwhsu.jenkins@lwhsu.org
+          subject: "$PROJECT_NAME - Build #$BUILD_NUMBER - $BUILD_STATUS"
+          body: |
+            $PROJECT_NAME - Build #$BUILD_NUMBER - $BUILD_STATUS:
+            
+            Build information: ${BUILD_URL}
+            Full change log: ${BUILD_URL}changes
+            Full build log: ${BUILD_URL}console
+            
+            Change summaries:
+            
+            ${CHANGES, format="%r by %a:\\n%m\\n"}
+            
+            The end of the build log:
+            
+            ${BUILD_LOG}
+          failure: true
+          unstable: true
+          fixed: false
+          send-to:
+            - culprits
+            - recipients
+      - email-ext:
+          recipients: lwhsu.jenkins@lwhsu.org
+          subject: "$PROJECT_NAME - Build #$BUILD_NUMBER - $BUILD_STATUS"
+          body: |
+            $PROJECT_NAME - Build #$BUILD_NUMBER - $BUILD_STATUS:
+            
+            Build information: ${BUILD_URL}
+            Full change log: ${BUILD_URL}changes
+            Full build log: ${BUILD_URL}console
+            
+            Change summaries:
+            
+            ${CHANGES, format="%r by %a:\\n%m\\n"}
+          failure: false
+          unstable: false
+          fixed: true
+          send-to:
+            - culprits
+            - recipients
+
 - job:
     defaults: global
     name: test-jjb
@@ -53,3 +99,4 @@
       - execute-in-jail
     publishers:
       - clean-jail
+      - mail-build
