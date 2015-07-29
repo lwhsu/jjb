@@ -11,6 +11,18 @@
       artifactDaysToKeep: -1
       artifactNumToKeep: -1
 
+- scm:
+    name: freebsd-src-head
+    scm:
+      - svn:
+          repos:
+            - url: https://svn.freebsd.org/base/head/
+              basedir: src
+            - url: https://github.com/freebsd/freebsd-ci
+              basedir: freebsd-ci
+          workspaceupdater: emulateclean
+          viewvc-url: https://svnweb.freebsd.org/base/
+
 - builder:
     name: setup-jail
     builders:
@@ -32,6 +44,8 @@
     defaults: global
     name: test-jjb
     node: jailer
+    scm:
+      - freebsd-src-head
     builders:
       - setup-jail
       - execute-in-jail
