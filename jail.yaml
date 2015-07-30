@@ -41,6 +41,20 @@
             script: sh freebsd-ci/scripts/jail/clean.sh
 
 - publisher:
+    name: scan-clang-warnings
+    publishers:
+      - warnings:
+          console-log-parsers:
+            - Clang (LLVM based)
+
+- publisher:
+    name: scan-gcc4-warnings
+    publishers:
+      - warnings:
+          console-log-parsers:
+            - GNU C Compiler 4 (gcc)
+
+- publisher:
     name: mail-notify
     publishers:
       - email-ext:
@@ -99,4 +113,5 @@
       - execute-in-jail
     publishers:
       - clean-jail
+      - scan-clang-warnings
       - mail-notify
