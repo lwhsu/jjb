@@ -41,7 +41,7 @@
             script: sh freebsd-ci/scripts/jail/clean.sh
 
 - publisher:
-    name: mail-build
+    name: mail-notify
     publishers:
       - email-ext:
           recipients: lwhsu.jenkins@lwhsu.org
@@ -99,4 +99,4 @@
       - execute-in-jail
     publishers:
       - clean-jail
-      - mail-build
+      - mail-notify
