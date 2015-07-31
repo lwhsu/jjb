@@ -55,6 +55,12 @@
             - GNU C Compiler 4 (gcc)
 
 - publisher:
+    name: publish-junit-results
+    publishers:
+      - junit:
+          results: test-report.xml
+
+- publisher:
     name: mail-notify
     publishers:
       - email-ext:
