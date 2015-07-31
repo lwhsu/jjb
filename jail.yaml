@@ -102,7 +102,7 @@
             
             The failed test cases:
             
-            ${FAILED_TESTS}
+            ${FAILED_TESTS, showStack="false", showMessage="false"}
           failure: false
           unstable: true
           fixed: false
