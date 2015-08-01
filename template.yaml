@@ -7,7 +7,7 @@
     triggers:
       - pollscm: H H/2 * * *
     builders:
-      - shell: make
+      - build-world-kernel
     publishers:
       - scan-clang-warnings
       - mail-notify

@@ -1,0 +1,6 @@
+- builder:
+    name: build-world-kernel
+    builders:
+      - shell: |
+          make buildworld
+          make buildkernel
