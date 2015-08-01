@@ -1,7 +1,9 @@
 - builder:
     name: setup-jail
     builders:
-      - shell: sh FreeBSD-ci/scripts/jail/setup.sh
+      - shell: |
+          sh FreeBSD-ci/scripts/jail/clean.sh
+          sh FreeBSD-ci/scripts/jail/setup.sh
 
 - builder:
     name: execute-in-jail
