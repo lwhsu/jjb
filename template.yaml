@@ -34,12 +34,3 @@
     jobs:
        - '{name}-{branch}-build'
        - '{name}-{branch}-test'
-
-- project:
-    name: FreeBSD
-    branch:
-      - head
-      - stable-10
-      - stable-9
-    jobs:
-      - '{name}-{branch}-ci'
