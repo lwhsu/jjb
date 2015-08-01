@@ -1,0 +1,12 @@
+- job:
+    disabled: true
+    name: FreeBSD_Doc-igor
+    defaults: global
+    scm:
+      - FreeBSD-doc-head
+    builders:
+      - setup-jail
+      - execute-in-jail
+    publishers:
+      - publish-checkstyle-results
+      - clean-jail
