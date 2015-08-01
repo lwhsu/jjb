@@ -5,7 +5,7 @@
           repos:
             - url: https://svn.FreeBSD.org/base/head/
               basedir: src
-            - url: https://github.com/freebsd/freebsd-ci@HEAD
+            - url: https://github.com/freebsd/freebsd-ci/trunk@HEAD
               basedir: freebsd-ci
           workspaceupdater: emulateclean
           viewvc-url: https://svnweb.FreeBSD.org/base/
@@ -17,7 +17,7 @@
           repos:
             - url: https://svn.freebsd.org/base/stable/10/
               basedir: src
-            - url: https://github.com/freebsd/freebsd-ci@HEAD
+            - url: https://github.com/freebsd/freebsd-ci/trunk@HEAD
               basedir: freebsd-ci
           workspaceupdater: emulateclean
           viewvc-url: https://svnweb.FreeBSD.org/base/
@@ -29,7 +29,7 @@
           repos:
             - url: https://svn.freebsd.org/base/stable/9/
               basedir: src
-            - url: https://github.com/freebsd/freebsd-ci@HEAD
+            - url: https://github.com/freebsd/freebsd-ci/trunk@HEAD
               basedir: freebsd-ci
           workspaceupdater: emulateclean
           viewvc-url: https://svnweb.FreeBSD.org/base/
@@ -41,7 +41,7 @@
           repos:
             - url: https://svn.freebsd.org/doc/head/
               basedir: doc
-            - url: https://github.com/freebsd/freebsd-ci@HEAD
+            - url: https://github.com/freebsd/freebsd-ci/trunk@HEAD
               basedir: freebsd-ci
           workspaceupdater: emulateclean
           viewvc-url: https://svnweb.FreeBSD.org/doc/
