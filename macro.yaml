@@ -1,0 +1,19 @@
+- publisher:
+    name: scan-clang-warnings
+    publishers:
+      - warnings:
+          console-log-parsers:
+            - Clang (LLVM based)
+
+- publisher:
+    name: scan-gcc4-warnings
+    publishers:
+      - warnings:
+          console-log-parsers:
+            - GNU C Compiler 4 (gcc)
+
+- publisher:
+    name: publish-junit-results
+    publishers:
+      - junit:
+          results: test-report.xml
