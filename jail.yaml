@@ -1,15 +1,3 @@
-- scm:
-    name: freebsd-src-head
-    scm:
-      - svn:
-          repos:
-            - url: https://svn.freebsd.org/base/head/
-              basedir: src
-            - url: https://github.com/freebsd/freebsd-ci
-              basedir: freebsd-ci
-          workspaceupdater: emulateclean
-          viewvc-url: https://svnweb.freebsd.org/base/
-
 - builder:
     name: setup-jail
     builders:
