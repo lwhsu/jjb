@@ -2,17 +2,17 @@
     name: setup-jail
     builders:
       - shell: |
-          sh FreeBSD-ci/scripts/jail/clean.sh
-          sh FreeBSD-ci/scripts/jail/setup.sh
+          sh freebsd-ci/scripts/jail/clean.sh
+          sh freebsd-ci/scripts/jail/setup.sh
 
 - builder:
     name: execute-in-jail
     builders:
-      - shell: sh FreeBSD-ci/scripts/jail/execute.sh
+      - shell: sh freebsd-ci/scripts/jail/execute.sh
 
 - publisher:
     name: clean-jail
     publishers:
       - post-tasks:
           - task:
-            script: sh FreeBSD-ci/scripts/jail/clean.sh
+            script: sh freebsd-ci/scripts/jail/clean.sh
