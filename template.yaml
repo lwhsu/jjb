@@ -2,7 +2,7 @@
     defaults: global
     name: '{name}-{branch}-build'
     scm:
-      - 'FreeBSD-src-head'
+      - 'FreeBSD-src-{branch}'
     triggers:
       - pollscm: H H/2 * * *
     builders:
@@ -15,7 +15,7 @@
     defaults: global
     name: '{name}-{branch}-test'
     scm:
-      - 'FreeBSD-src-head'
+      - 'FreeBSD-src-{branch}'
     triggers:
       - reverse:
           jobs:
