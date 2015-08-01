@@ -24,7 +24,7 @@
             - '{name}-build'
           result: success
     builders:
-      - shell: make
+      - regression-test
     publishers:
       - publish-junit-results
       - mail-notify

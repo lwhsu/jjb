@@ -4,3 +4,9 @@
       - shell: |
           make buildworld
           make buildkernel
+
+- builder:
+    name: regression-test
+    builders:
+      - shell: |
+          echo "regression-test!"
