@@ -1,0 +1,11 @@
+- scm:
+    name: FreeBSD-src-head
+    scm:
+      - svn:
+          repos:
+            - url: https://svn.FreeBSD.org/base/head/
+              basedir: src
+            - url: https://github.com/FreeBSD/FreeBSD-ci
+              basedir: FreeBSD-ci
+          workspaceupdater: emulateclean
+          viewvc-url: https://svnweb.FreeBSD.org/base/
