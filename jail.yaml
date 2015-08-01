@@ -1,19 +1,19 @@
 - builder:
     name: setup-jail
     builders:
-      - shell: sh freebsd-ci/scripts/jail/setup.sh
+      - shell: sh FreeBSD-ci/scripts/jail/setup.sh
 
 - builder:
     name: execute-in-jail
     builders:
-      - shell: sh freebsd-ci/scripts/jail/execute.sh
+      - shell: sh FreeBSD-ci/scripts/jail/execute.sh
 
 - publisher:
     name: clean-jail
     publishers:
       - post-tasks:
           - task:
-            script: sh freebsd-ci/scripts/jail/clean.sh
+            script: sh FreeBSD-ci/scripts/jail/clean.sh
 
 - publisher:
     name: scan-clang-warnings
@@ -39,6 +39,7 @@
     name: mail-notify
     publishers:
       - email-ext:
+          disable-publisher: true
           recipients: lwhsu.jenkins@lwhsu.org
           subject: "$PROJECT_NAME - Build #$BUILD_NUMBER - $BUILD_STATUS"
           body: |
@@ -62,6 +63,7 @@
             - culprits
             - recipients
       - email-ext:
+          disable-publisher: true
           recipients: lwhsu.jenkins@lwhsu.org
           subject: "$PROJECT_NAME - Build #$BUILD_NUMBER - $BUILD_STATUS"
           body: |
@@ -85,6 +87,7 @@
             - culprits
             - recipients
       - email-ext:
+          disable-publisher: true
           recipients: lwhsu.jenkins@lwhsu.org
           subject: "$PROJECT_NAME - Build #$BUILD_NUMBER - $BUILD_STATUS"
           body: |
@@ -109,7 +112,7 @@
     name: test-jjb
     node: jailer
     scm:
-      - freebsd-src-head
+      - FreeBSD-src-head
     triggers:
       - pollscm: H H/2 * * *
     builders:
