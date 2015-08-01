@@ -1,0 +1,43 @@
+- job-template:
+    defaults: global
+    name: '{name}-build'
+    scm:
+      - 'FreeBSD-src-head'
+    triggers:
+      - pollscm: H H/2 * * *
+    builders:
+      - shell: make
+    publishers:
+      - scan-clang-warnings
+      - mail-notify
+
+- job-template:
+    defaults: global
+    name: '{name}-test'
+    scm:
+      - 'FreeBSD-src-head'
+    triggers:
+      - reverse:
+          jobs:
+            - '{name}-build'
+          result: success
+    builders:
+      - shell: make
+    publishers:
+      - publish-junit-results
+      - mail-notify
+
+- job-group:
+    name: '{name}-{branch}-ci'
+    jobs:
+       - '{name}-build'
+       - '{name}-test'
+
+- project:
+    name: FreeBSD
+    branch:
+      - head
+      - stable-10
+      - stable-9
+    jobs:
+      - '{name}-{branch}-ci'
