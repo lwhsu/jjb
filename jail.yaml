@@ -106,19 +106,3 @@
           send-to:
             - culprits
             - recipients
-
-- job:
-    defaults: global
-    name: test-jjb
-    node: jailer
-    scm:
-      - FreeBSD-src-head
-    triggers:
-      - pollscm: H H/2 * * *
-    builders:
-      - setup-jail
-      - execute-in-jail
-    publishers:
-      - clean-jail
-      - scan-clang-warnings
-      - mail-notify
