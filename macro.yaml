@@ -17,3 +17,9 @@
     publishers:
       - junit:
           results: test-report.xml
+
+- publisher:
+    name: publish-checkstyle-results
+    publishers:
+      - checkstyle:
+          pattern: checkstyle-result.xml
