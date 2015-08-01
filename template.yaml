@@ -1,6 +1,6 @@
 - job-template:
     defaults: global
-    name: '{name}-build'
+    name: '{name}-{branch}-build'
     scm:
       - 'FreeBSD-src-head'
     triggers:
@@ -13,7 +13,7 @@
 
 - job-template:
     defaults: global
-    name: '{name}-test'
+    name: '{name}-{branch}-test'
     scm:
       - 'FreeBSD-src-head'
     triggers:
@@ -30,8 +30,8 @@
 - job-group:
     name: '{name}-{branch}-ci'
     jobs:
-       - '{name}-build'
-       - '{name}-test'
+       - '{name}-{branch}-build'
+       - '{name}-{branch}-test'
 
 - project:
     name: FreeBSD
