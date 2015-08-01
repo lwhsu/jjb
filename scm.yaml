@@ -33,3 +33,15 @@
               basedir: freebsd-ci
           workspaceupdater: emulateclean
           viewvc-url: https://svnweb.FreeBSD.org/base/
+
+- scm:
+    name: FreeBSD-doc-head
+    scm:
+      - svn:
+          repos:
+            - url: https://svn.freebsd.org/doc/head/
+              basedir: doc
+            - url: https://github.com/freebsd/freebsd-ci@HEAD
+              basedir: freebsd-ci
+          workspaceupdater: emulateclean
+          viewvc-url: https://svnweb.FreeBSD.org/doc/
