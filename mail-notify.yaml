@@ -42,7 +42,7 @@
             
             The failed test cases:
             
-            ${FAILED_TESTS, showStack="false", showMessage="false"}
+            ${FAILED_TESTS, showStack="false", showMessage="true", maxTests=100}
           failure: false
           unstable: true
           fixed: false
