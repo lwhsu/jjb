@@ -23,3 +23,8 @@
     publishers:
       - checkstyle:
           pattern: checkstyle-result.xml
+
+- publisher:
+    name: publish-clang-scan-build-results
+    publishers:
+      - scan-build

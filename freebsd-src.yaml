@@ -6,3 +6,16 @@
       - stable-9
     jobs:
       - '{name}-{branch}-ci'
+
+- job:
+    name: FreeBSD-head-scan_build
+    disabled: true
+    defaults: global
+    scm:
+      - FreeBSD-src-head
+    builders:
+      - setup-jail
+      - execute-in-jail
+    publishers:
+      - publish-clang-scan-build-results
+      - clean-jail
