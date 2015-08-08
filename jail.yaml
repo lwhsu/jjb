@@ -13,6 +13,8 @@
 - publisher:
     name: clean-jail
     publishers:
-      - post-tasks:
-          - task:
-            script: sh freebsd-ci/scripts/jail/clean.sh
+      - postbuildscript:
+          builders:
+            - shell: sh freebsd-ci/scripts/jail/clean.sh
+          script-only-if-succeeded: False
+          script-only-if-failed: False
