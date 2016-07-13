@@ -1,0 +1,4 @@
+[jenkins]
+user=<USERNAME>
+password=<API_TOKEN>
+url=https://ci.FreeBSD.org
