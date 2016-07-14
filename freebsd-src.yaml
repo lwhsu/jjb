@@ -2,6 +2,7 @@
     name: FreeBSD
     branch:
       - head
+      - stable-11
       - stable-10
       - stable-9
     jobs:
