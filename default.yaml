@@ -2,7 +2,7 @@
     name: global
     project-type: freestyle
     concurrent: false
-    disabled: false
+    disabled: true
     block-downstream: false
     block-upstream: false
     logrotate:
