@@ -47,3 +47,13 @@
               basedir: doc
           workspaceupdater: emulateclean
           viewvc-url: https://svnweb.FreeBSD.org/doc/
+
+- scm:
+    name: FreeBSD-ports-head
+    scm:
+      - svn:
+          repos:
+            - url: https://svn.freebsd.org/ports/head/
+              basedir: ports
+          workspaceupdater: emulateclean
+          viewvc-url: https://svnweb.FreeBSD.org/ports/
