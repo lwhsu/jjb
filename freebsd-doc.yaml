@@ -1,5 +1,4 @@
 - job:
-    disabled: true
     name: FreeBSD_Doc-igor
     defaults: global
     scm:

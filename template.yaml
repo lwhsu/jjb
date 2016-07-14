@@ -1,6 +1,5 @@
 - job-template:
     defaults: global
-    disabled: true
     name: '{name}-{branch}-build'
     scm:
       - 'FreeBSD-src-{branch}'
@@ -13,7 +12,6 @@
       - mail-notify
 
 - job-template:
-    disabled: true
     defaults: global
     name: '{name}-{branch}-test'
     scm:

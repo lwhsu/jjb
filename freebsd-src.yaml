@@ -10,7 +10,6 @@
 
 - job:
     name: FreeBSD-head-scan_build
-    disabled: true
     defaults: global
     scm:
       - FreeBSD-src-head
