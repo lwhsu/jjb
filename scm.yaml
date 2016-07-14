@@ -11,6 +11,18 @@
           viewvc-url: https://svnweb.FreeBSD.org/base/
 
 - scm:
+    name: FreeBSD-src-stable-11
+    scm:
+      - svn:
+          repos:
+            - url: https://svn.freebsd.org/base/stable/11/
+              basedir: src
+            - url: https://github.com/freebsd/freebsd-ci/trunk@HEAD
+              basedir: freebsd-ci
+          workspaceupdater: emulateclean
+          viewvc-url: https://svnweb.FreeBSD.org/base/
+
+- scm:
     name: FreeBSD-src-stable-10
     scm:
       - svn:
