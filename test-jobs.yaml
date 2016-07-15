@@ -2,12 +2,9 @@
     name: test-lwhsu-build-in-jail
     defaults: global
     scm:
-      - svn:
-          repos:
-            - url: https://github.com/lwhsu/freebsd-ci/trunk@HEAD
-              basedir: freebsd-ci
-          workspaceupdater: emulateclean
+      - FreeBSD-doc-head
     builders:
+      - checkout-scripts
       - setup-jail
       - execute-in-jail
     publishers:
