@@ -1,4 +1,22 @@
 - job:
+    name: FreeBSD-doc-head
+    defaults: global
+    node: jailer
+    scm:
+      - FreeBSD-doc-head
+    builders:
+      - checkout-scripts
+      - setup-jail
+      - execute-in-jail
+    publishers:
+      - clean-jail
+    wrappers:
+      - timeout:
+          timeout: 30
+          timeout-var: 'BUILD_TIMEOUT'
+          fail: true
+
+- job:
     name: FreeBSD_Doc-igor
     defaults: global
     scm:
