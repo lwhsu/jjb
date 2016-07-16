@@ -1,8 +1,9 @@
 - job:
     name: test-lwhsu-build-in-jail
     defaults: global
+    node: jailer_fast
     scm:
-      - FreeBSD-doc-head
+      - FreeBSD-src-head
     builders:
       - checkout-scripts
       - setup-jail
@@ -11,7 +12,7 @@
       - clean-jail
     wrappers:
       - timeout:
-          timeout: 1
+          timeout: 30
           timeout-var: 'BUILD_TIMEOUT'
           fail: true
           type: absolute
