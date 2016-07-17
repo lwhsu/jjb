@@ -1,15 +1,27 @@
 - job-template:
     defaults: global
     name: '{name}-{branch}-build'
+    node: jailer_fast
     scm:
       - 'FreeBSD-src-{branch}'
-    triggers:
-      - pollscm: H H/2 * * *
+#    triggers:
+#      - pollscm: H H/2 * * *
     builders:
-      - build-world-kernel
+#      - build-world-kernel
+      - checkout-scripts
+      - setup-jail
+      - execute-in-jail
     publishers:
       - scan-clang-warnings
-      - mail-notify
+      - clean-jail
+#      - mail-notify
+    wrappers:
+      - timestamps
+      - timeout:
+          timeout: 60
+          timeout-var: 'BUILD_TIMEOUT'
+          fail: true
+          type: absolute
 
 - job-template:
     defaults: global
@@ -25,7 +37,7 @@
       - regression-test
     publishers:
       - publish-junit-results
-      - mail-notify
+#      - mail-notify
 
 - job-group:
     name: '{name}-{branch}-ci'
