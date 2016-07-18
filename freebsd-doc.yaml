@@ -13,7 +13,7 @@
     wrappers:
       - timestamps
       - timeout:
-          timeout: 30
+          timeout: 90
           timeout-var: 'BUILD_TIMEOUT'
           fail: true
 
