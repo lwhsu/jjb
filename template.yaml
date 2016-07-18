@@ -25,6 +25,27 @@
 
 - job-template:
     defaults: global
+    name: '{name}-{branch}-arm64-build'
+    node: jailer_fast
+    scm:
+      - 'FreeBSD-src-{branch}'
+    builders:
+      - checkout-scripts
+      - setup-jail
+      - execute-in-jail
+    publishers:
+      - scan-clang-warnings
+      - clean-jail
+    wrappers:
+      - timestamps
+      - timeout:
+          timeout: 60
+          timeout-var: 'BUILD_TIMEOUT'
+          fail: true
+          type: absolute
+
+- job-template:
+    defaults: global
     name: '{name}-{branch}-test'
     scm:
       - 'FreeBSD-src-{branch}'
@@ -44,3 +65,8 @@
     jobs:
        - '{name}-{branch}-build'
        - '{name}-{branch}-test'
+
+- job-group:
+    name: '{name}-{branch}-arm64-ci'
+    jobs:
+       - '{name}-{branch}-arm64-build'

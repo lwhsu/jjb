@@ -8,6 +8,14 @@
     jobs:
       - '{name}-{branch}-ci'
 
+- project:
+    name: FreeBSD-arm64
+    branch:
+      - head
+      - stable-11
+    jobs:
+      - '{name}-{branch}-arm64-ci'
+
 - job:
     name: FreeBSD-head-scan_build
     defaults: global
