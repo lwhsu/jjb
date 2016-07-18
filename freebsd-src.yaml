@@ -11,6 +11,18 @@
       - 'FreeBSD-{branch}-{arch}-ci'
 
 - project:
+    name: FreeBSD-i386
+    arch:
+      - i386
+    branch:
+      - head
+      - stable-11
+      - stable-10
+      - stable-9
+    jobs:
+      - 'FreeBSD-{branch}-{arch}-ci'
+
+- project:
     name: FreeBSD-arm64
     arch:
       - arm64
