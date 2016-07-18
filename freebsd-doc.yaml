@@ -11,6 +11,7 @@
     publishers:
       - clean-jail
     wrappers:
+      - timestamps
       - timeout:
           timeout: 30
           timeout-var: 'BUILD_TIMEOUT'
