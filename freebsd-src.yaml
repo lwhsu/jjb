@@ -1,20 +1,24 @@
 - project:
-    name: FreeBSD
+    name: FreeBSD-amd64
+    arch:
+      - amd64
     branch:
       - head
       - stable-11
       - stable-10
       - stable-9
     jobs:
-      - '{name}-{branch}-ci'
+      - 'FreeBSD-{branch}-{arch}-ci'
 
 - project:
     name: FreeBSD-arm64
+    arch:
+      - arm64
     branch:
       - head
       - stable-11
     jobs:
-      - '{name}-{branch}-arm64-ci'
+      - 'FreeBSD-{branch}-{arch}-ci'
 
 - job:
     name: FreeBSD-head-scan_build

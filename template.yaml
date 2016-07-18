@@ -1,6 +1,6 @@
 - job-template:
     defaults: global
-    name: '{name}-{branch}-build'
+    name: 'FreeBSD-{branch}-{arch}-build'
     node: jailer_fast
     scm:
       - 'FreeBSD-src-{branch}'
@@ -25,34 +25,13 @@
 
 - job-template:
     defaults: global
-    name: '{name}-{branch}-arm64-build'
-    node: jailer_fast
-    scm:
-      - 'FreeBSD-src-{branch}'
-    builders:
-      - checkout-scripts
-      - setup-jail
-      - execute-in-jail
-    publishers:
-      - scan-clang-warnings
-      - clean-jail
-    wrappers:
-      - timestamps
-      - timeout:
-          timeout: 60
-          timeout-var: 'BUILD_TIMEOUT'
-          fail: true
-          type: absolute
-
-- job-template:
-    defaults: global
-    name: '{name}-{branch}-test'
+    name: 'FreeBSD-{branch}-{arch}-test'
     scm:
       - 'FreeBSD-src-{branch}'
     triggers:
       - reverse:
           jobs:
-            - '{name}-build'
+            - 'FreeBSD-build'
           result: success
     builders:
       - regression-test
@@ -61,12 +40,7 @@
 #      - mail-notify
 
 - job-group:
-    name: '{name}-{branch}-ci'
+    name: 'FreeBSD-{branch}-{arch}-ci'
     jobs:
-       - '{name}-{branch}-build'
-       - '{name}-{branch}-test'
-
-- job-group:
-    name: '{name}-{branch}-arm64-ci'
-    jobs:
-       - '{name}-{branch}-arm64-build'
+       - 'FreeBSD-{branch}-{arch}-build'
+       - 'FreeBSD-{branch}-{arch}-test'
