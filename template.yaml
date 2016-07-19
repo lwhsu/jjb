@@ -7,7 +7,30 @@
 #    triggers:
 #      - pollscm: H H/2 * * *
     builders:
-#      - build-world-kernel
+      - checkout-scripts
+      - setup-jail
+      - execute-in-jail
+    publishers:
+      - scan-clang-warnings
+      - clean-jail
+#      - mail-notify
+    wrappers:
+      - timestamps
+      - timeout:
+          timeout: 60
+          timeout-var: 'BUILD_TIMEOUT'
+          fail: true
+          type: absolute
+
+- job-template:
+    defaults: global
+    name: 'FreeBSD-{branch}-{arch}-LINT'
+    node: jailer_fast
+    scm:
+      - 'FreeBSD-src-{branch}'
+#    triggers:
+#      - pollscm: H H/2 * * *
+    builders:
       - checkout-scripts
       - setup-jail
       - execute-in-jail
@@ -43,4 +66,5 @@
     name: 'FreeBSD-{branch}-{arch}-ci'
     jobs:
        - 'FreeBSD-{branch}-{arch}-build'
+       - 'FreeBSD-{branch}-{arch}-LINT'
        - 'FreeBSD-{branch}-{arch}-test'
