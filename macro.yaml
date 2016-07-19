@@ -4,7 +4,7 @@
       - shell: |
           rm -fr freebsd-ci
           git config --global http.proxy ${BUILDER_HTTP_PROXY}
-          git clone https://github.com/lwhsu/freebsd-ci.git
+          git clone --depth=1 https://github.com/lwhsu/freebsd-ci.git
 
 - publisher:
     name: scan-clang-warnings
