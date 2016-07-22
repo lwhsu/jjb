@@ -5,12 +5,10 @@
     node: jailer_fast
     scm:
       - FreeBSD-src-head
-    parameters:
-      - string:
-          name: MOUNT_REPO
-          default: src
     builders:
       - checkout-scripts
+      - inject:
+          properties-content: MOUNT_REPO=src
       - setup-jail
       - execute-in-jail
     publishers:
