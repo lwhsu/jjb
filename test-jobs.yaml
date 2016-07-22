@@ -1,5 +1,6 @@
 - job:
     name: test-lwhsu-build-in-jail
+    disabled: false
     defaults: global
     node: jailer_fast
     scm:
@@ -9,11 +10,16 @@
       - setup-jail
       - execute-in-jail
     publishers:
+      - ftp:
+          site: 'artifact.ci.freebsd.org'
+          target: 'snapshot/r${SVN_REVISION}'
+          source: 'src/release/*.txz'
+          remove-prefix: 'src/release'
       - clean-jail
     wrappers:
       - timestamps
       - timeout:
-          timeout: 30
+          timeout: 60
           timeout-var: 'BUILD_TIMEOUT'
           fail: true
           type: absolute
