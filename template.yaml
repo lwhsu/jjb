@@ -16,6 +16,11 @@
       - execute-in-jail
     publishers:
       - scan-clang-warnings
+      - ftp:
+          site: 'artifact.ci.freebsd.org'
+          target: 'snapshot'
+          source: 'src/release/artifact/**'
+          remove-prefix: 'src/release/artifact'
       - clean-jail
 #      - mail-notify
     wrappers:
