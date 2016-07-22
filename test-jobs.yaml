@@ -14,9 +14,9 @@
     publishers:
       - ftp:
           site: 'artifact.ci.freebsd.org'
-          target: 'snapshot/r${SVN_REVISION}'
-          source: 'src/release/*.txz'
-          remove-prefix: 'src/release'
+          target: 'snapshot'
+          source: 'src/release/artifact/**'
+          remove-prefix: 'src/release/artifact'
       - clean-jail
     wrappers:
       - timestamps
