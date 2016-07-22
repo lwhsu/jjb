@@ -8,6 +8,7 @@
     properties:
       - inject:
           properties-content: |
+            FBSD_BRANCH=head
             MOUNT_REPO=src
     builders:
       - checkout-scripts
