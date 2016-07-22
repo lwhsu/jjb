@@ -6,6 +6,10 @@
       - 'FreeBSD-src-{branch}'
 #    triggers:
 #      - pollscm: H H/2 * * *
+    properties:
+      - inject:
+          properties-content: |
+            MOUNT_REPO=src
     builders:
       - checkout-scripts
       - setup-jail
@@ -30,6 +34,10 @@
       - 'FreeBSD-src-{branch}'
 #    triggers:
 #      - pollscm: H H/2 * * *
+    properties:
+      - inject:
+          properties-content: |
+            MOUNT_REPO=src
     builders:
       - checkout-scripts
       - setup-jail
