@@ -1,6 +1,5 @@
 - job:
     name: test-lwhsu-build-in-jail
-    disabled: false
     defaults: global
     node: jailer_fast
     scm:
