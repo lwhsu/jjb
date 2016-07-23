@@ -3,7 +3,7 @@
     scm:
       - svn:
           repos:
-            - url: https://svn.FreeBSD.org/base/head/
+            - url: svn://svn.freebsd.org/base/head/
               basedir: src
           workspaceupdater: emulateclean
           viewvc-url: https://svnweb.FreeBSD.org/base/
@@ -13,7 +13,7 @@
     scm:
       - svn:
           repos:
-            - url: https://svn.freebsd.org/base/stable/11/
+            - url: svn://svn.freebsd.org/base/stable/11/
               basedir: src
           workspaceupdater: emulateclean
           viewvc-url: https://svnweb.FreeBSD.org/base/
@@ -23,7 +23,7 @@
     scm:
       - svn:
           repos:
-            - url: https://svn.freebsd.org/base/stable/10/
+            - url: svn://svn.freebsd.org/base/stable/10/
               basedir: src
           workspaceupdater: emulateclean
           viewvc-url: https://svnweb.FreeBSD.org/base/
@@ -33,7 +33,7 @@
     scm:
       - svn:
           repos:
-            - url: https://svn.freebsd.org/base/stable/9/
+            - url: svn://svn.freebsd.org/base/stable/9/
               basedir: src
           workspaceupdater: emulateclean
           viewvc-url: https://svnweb.FreeBSD.org/base/
@@ -43,7 +43,7 @@
     scm:
       - svn:
           repos:
-            - url: https://svn.freebsd.org/doc/head/
+            - url: svn://svn.freebsd.org/doc/head/
               basedir: doc
           workspaceupdater: emulateclean
           viewvc-url: https://svnweb.FreeBSD.org/doc/
@@ -53,7 +53,7 @@
     scm:
       - svn:
           repos:
-            - url: https://svn.freebsd.org/ports/head/
+            - url: svn://svn.freebsd.org/ports/head/
               basedir: ports
           workspaceupdater: emulateclean
           viewvc-url: https://svnweb.FreeBSD.org/ports/
