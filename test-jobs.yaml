@@ -16,7 +16,7 @@
     publishers:
       - ftp:
           site: 'artifact.ci.freebsd.org'
-          target: 'snapshot'
+          target: 'test'
           source: 'src/release/artifact/**'
           remove-prefix: 'src/release/artifact'
       - clean-jail
