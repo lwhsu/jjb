@@ -2,13 +2,6 @@
     name: test-lwhsu-build-in-jail
     defaults: global
     node: jailer_fast
-    scm:
-      - FreeBSD-src-head
-    properties:
-      - inject:
-          properties-content: |
-            FBSD_BRANCH=head
-            MOUNT_REPO=src
     builders:
       - checkout-scripts
       - setup-jail
@@ -17,8 +10,8 @@
       - ftp:
           site: 'artifact.ci.freebsd.org'
           target: 'test'
-          source: 'src/release/artifact/**'
-          remove-prefix: 'src/release/artifact'
+          source: 'work/*.xz'
+          remove-prefix: 'work'
       - clean-jail
     wrappers:
       - timestamps
