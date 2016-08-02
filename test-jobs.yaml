@@ -10,7 +10,7 @@
       - ftp:
           site: 'artifact.ci.freebsd.org'
           target: 'test'
-          source: 'work/*.gz'
+          source: 'work/*.xz'
           remove-prefix: 'work'
       - clean-jail
     wrappers:
