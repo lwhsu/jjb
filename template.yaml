@@ -31,7 +31,7 @@
             - 'FreeBSD-{branch}-{arch}-LINT'
           condition: SUCCESS
           svn-revision: true
-          property-file: trigger.property
+          predefined-parameters: |
     wrappers:
       - timestamps
       - timeout:
