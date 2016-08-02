@@ -103,5 +103,6 @@
     name: 'FreeBSD-{branch}-{arch}-ci'
     jobs:
        - 'FreeBSD-{branch}-{arch}-build'
+       - 'FreeBSD-{branch}-{arch}-images'
        - 'FreeBSD-{branch}-{arch}-LINT'
        - 'FreeBSD-{branch}-{arch}-test'
