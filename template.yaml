@@ -62,6 +62,29 @@
 
 - job-template:
     defaults: global
+    name: 'FreeBSD-{branch}-{arch}-images'
+    node: jailer
+    builders:
+      - checkout-scripts
+      - setup-jail
+      - execute-in-jail
+    publishers:
+      - ftp:
+          site: 'artifact.ci.freebsd.org'
+          target: 'snapshot'
+          source: 'artifact/**'
+          remove-prefix: 'artifact'
+      - clean-jail
+    wrappers:
+      - timestamps
+      - timeout:
+          timeout: 30
+          timeout-var: 'BUILD_TIMEOUT'
+          fail: true
+          type: absolute
+
+- job-template:
+    defaults: global
     name: 'FreeBSD-{branch}-{arch}-test'
     scm:
       - 'FreeBSD-src-{branch}'
