@@ -24,6 +24,14 @@
           remove-prefix: 'src/release/artifact'
       - clean-jail
 #      - mail-notify
+      - trigger-parameterized-builds:
+        - project:
+            - 'FreeBSD-{branch}-{arch}-images'
+            - 'FreeBSD-{branch}-{arch}-test'
+            - 'FreeBSD-{branch}-{arch}-LINT'
+          condition: SUCCESS
+          svn-revision: true
+          property-file: trigger.property
     wrappers:
       - timestamps
       - timeout:
