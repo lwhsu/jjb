@@ -98,13 +98,6 @@
 - job-template:
     defaults: global
     name: 'FreeBSD-{branch}-{arch}-test'
-    scm:
-      - 'FreeBSD-src-{branch}'
-    triggers:
-      - reverse:
-          jobs:
-            - 'FreeBSD-build'
-          result: success
     builders:
       - regression-test
     publishers:
