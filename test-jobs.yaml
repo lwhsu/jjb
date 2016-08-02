@@ -1,7 +1,7 @@
 - job:
     name: test-lwhsu-build-in-jail
     defaults: global
-    node: jailer_fast
+    node: jailer
     builders:
       - checkout-scripts
       - setup-jail
