@@ -64,6 +64,10 @@
     defaults: global
     name: 'FreeBSD-{branch}-{arch}-images'
     node: jailer
+    parameters:
+      - string:
+          name: REVISION
+          description: "Subversion revision"
     builders:
       - checkout-scripts
       - setup-jail
