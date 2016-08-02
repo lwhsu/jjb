@@ -27,7 +27,7 @@
       - trigger-parameterized-builds:
         - project:
             - 'FreeBSD-{branch}-{arch}-images'
-            - 'FreeBSD-{branch}-{arch}-test'
+            - 'FreeBSD-{branch}-{arch}-test_image'
             - 'FreeBSD-{branch}-{arch}-LINT'
           condition: SUCCESS
           svn-revision: true
@@ -97,9 +97,44 @@
 
 - job-template:
     defaults: global
+    name: 'FreeBSD-{branch}-{arch}-test_image'
+    node: jailer
+    parameters:
+      - string:
+          name: REVISION
+          description: "Subversion revision"
+    builders:
+      - checkout-scripts
+      - setup-jail
+      - execute-in-jail
+    publishers:
+      - ftp:
+          site: 'artifact.ci.freebsd.org'
+          target: 'snapshot'
+          source: 'artifact/**'
+          remove-prefix: 'artifact'
+      - clean-jail
+      - trigger-parameterized-builds:
+        - project:
+            - 'FreeBSD-{branch}-{arch}-test'
+          condition: SUCCESS
+          svn-revision: true
+          property-file: trigger.property
+    wrappers:
+      - timestamps
+      - timeout:
+          timeout: 30
+          timeout-var: 'BUILD_TIMEOUT'
+          fail: true
+          type: absolute
+
+- job-template:
+    defaults: global
     name: 'FreeBSD-{branch}-{arch}-test'
     builders:
-      - regression-test
+      #- cleanup-workspace
+      - checkout-scripts
+      - execute-job-build-script
     publishers:
       - publish-junit-results
 #      - mail-notify
@@ -110,4 +145,5 @@
        - 'FreeBSD-{branch}-{arch}-build'
        - 'FreeBSD-{branch}-{arch}-images'
        - 'FreeBSD-{branch}-{arch}-LINT'
+       - 'FreeBSD-{branch}-{arch}-test_image'
        - 'FreeBSD-{branch}-{arch}-test'

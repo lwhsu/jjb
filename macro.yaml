@@ -6,6 +6,12 @@
           git config --global http.proxy ${BUILDER_HTTP_PROXY}
           git clone --depth=1 https://github.com/lwhsu/freebsd-ci.git
 
+- builder:
+    name: execute-job-build-script
+    builders:
+      - shell: |
+          sh -ex freebsd-ci/jobs/${JOB_NAME}/build.sh"
+
 - publisher:
     name: scan-clang-warnings
     publishers:
