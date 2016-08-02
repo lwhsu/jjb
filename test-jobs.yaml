@@ -1,7 +1,7 @@
 - job:
     name: test-lwhsu-build-in-jail
     defaults: global
-    node: jailer
+    node: jailer_fast
     builders:
       - checkout-scripts
       - setup-jail
@@ -10,7 +10,7 @@
       - ftp:
           site: 'artifact.ci.freebsd.org'
           target: 'test'
-          source: 'work/*.xz'
+          source: 'work/*.gz'
           remove-prefix: 'work'
       - clean-jail
     wrappers:
