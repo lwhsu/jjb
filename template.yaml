@@ -74,7 +74,7 @@
     node: jailer
     parameters:
       - string:
-          name: REVISION
+          name: SVN_REVISION
           description: "Subversion revision"
     builders:
       - checkout-scripts
@@ -101,7 +101,7 @@
     node: jailer
     parameters:
       - string:
-          name: REVISION
+          name: SVN_REVISION
           description: "Subversion revision"
     builders:
       - checkout-scripts
