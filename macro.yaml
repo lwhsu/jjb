@@ -10,7 +10,7 @@
     name: execute-job-build-script
     builders:
       - shell: |
-          sh -ex freebsd-ci/jobs/${JOB_NAME}/build.sh"
+          sh -ex freebsd-ci/jobs/${JOB_NAME}/build.sh
 
 - publisher:
     name: scan-clang-warnings
