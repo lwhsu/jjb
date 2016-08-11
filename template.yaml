@@ -76,6 +76,10 @@
       - string:
           name: SVN_REVISION
           description: "Subversion revision"
+    properties:
+      - inject:
+          properties-content: |
+            FBSD_BRANCH={branch}
     builders:
       - checkout-scripts
       - setup-jail
@@ -103,6 +107,10 @@
       - string:
           name: SVN_REVISION
           description: "Subversion revision"
+    properties:
+      - inject:
+          properties-content: |
+            FBSD_BRANCH={branch}
     builders:
       - checkout-scripts
       - setup-jail
