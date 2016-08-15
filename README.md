@@ -1,3 +1,15 @@
+[Jenkins Job Builder](http://docs.openstack.org/infra/jenkins-job-builder/) config for FreeBSD CI jobs
+
+Install `devel/py-jenkins-job-builder`
+
+`cp jenkins_jobs.ini.sample jenkins_jobs.ini`
+
+Edit `jenkins_jobs.ini` for your credenticals of ci.FreeBSD.org
+
+`make`
+
+=== Install jenkins job builder from source ===
+
 .zshrc
 ```zsh
 PATH=~${PATH}:~/local/bin
