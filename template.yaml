@@ -140,6 +140,10 @@
     defaults: global
     name: 'FreeBSD-{branch}-{arch}-test'
     node: bhyve_host
+    properties:
+      - inject:
+          properties-content: |
+            FBSD_BRANCH={branch}
     parameters:
       - string:
           name: SVN_REVISION
