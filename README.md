@@ -8,7 +8,9 @@ Setup:
 Update jenkins jobs:
 `make`
 
-=== Install jenkins job builder from source ===
+---
+
+### Install jenkins job builder from source ###
 
 .zshrc
 ```zsh
