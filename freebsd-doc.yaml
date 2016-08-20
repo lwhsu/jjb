@@ -18,13 +18,21 @@
           fail: true
 
 - job:
-    name: FreeBSD_Doc-igor
+    name: FreeBSD-doc-head-igor
     defaults: global
+    node: jailer
     scm:
       - FreeBSD-doc-head
     builders:
+      - checkout-scripts
       - setup-jail
       - execute-in-jail
     publishers:
       - publish-checkstyle-results
       - clean-jail
+    wrappers:
+      - timestamps
+      - timeout:
+          timeout: 30
+          timeout-var: 'BUILD_TIMEOUT'
+          fail: true
