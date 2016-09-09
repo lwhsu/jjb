@@ -140,6 +140,8 @@
     defaults: global
     name: 'FreeBSD-{branch}-{arch}-test'
     node: bhyve_host
+    scm:
+      - 'FreeBSD-src-{branch}'
     properties:
       - inject:
           properties-content: |
