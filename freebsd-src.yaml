@@ -35,9 +35,11 @@
 - job:
     name: FreeBSD-head-scan_build
     defaults: global
+    node: jailer_fast
     scm:
       - FreeBSD-src-head
     builders:
+      - checkout-scripts
       - setup-jail
       - execute-in-jail
     publishers:
