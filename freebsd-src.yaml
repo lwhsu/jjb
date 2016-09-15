@@ -40,10 +40,8 @@
       - FreeBSD-src-head
     builders:
       - checkout-scripts
-      - setup-jail
-      - execute-in-jail
+      - execute-job-build-script
     publishers:
       - publish-clang-scan-build-results
-      - clean-jail
     wrappers:
       - timestamps
