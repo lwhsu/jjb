@@ -45,3 +45,5 @@
     publishers:
       - publish-clang-scan-build-results
       - clean-jail
+    wrappers:
+      - timestamps
