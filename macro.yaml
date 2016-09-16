@@ -41,4 +41,5 @@
 - publisher:
     name: publish-clang-scan-build-results
     publishers:
-      - scan-build
+      - scan-build:
+          report-folder: clangScanBuildReports
