@@ -27,7 +27,7 @@
       - trigger-parameterized-builds:
         - project:
             - 'FreeBSD-{branch}-{arch}-images'
-            - 'FreeBSD-{branch}-{arch}-test_image'
+            - 'FreeBSD-{branch}-{arch}-testvm'
             - 'FreeBSD-{branch}-{arch}-LINT'
           condition: SUCCESS
           svn-revision: true
@@ -101,7 +101,7 @@
 
 - job-template:
     defaults: global
-    name: 'FreeBSD-{branch}-{arch}-test_image'
+    name: 'FreeBSD-{branch}-{arch}-testvm'
     node: jailer_fast
     parameters:
       - string:
@@ -171,5 +171,5 @@
        - 'FreeBSD-{branch}-{arch}-build'
        - 'FreeBSD-{branch}-{arch}-images'
        - 'FreeBSD-{branch}-{arch}-LINT'
-       - 'FreeBSD-{branch}-{arch}-test_image'
+       - 'FreeBSD-{branch}-{arch}-testvm'
        - 'FreeBSD-{branch}-{arch}-test'
