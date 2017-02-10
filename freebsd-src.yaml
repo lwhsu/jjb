@@ -6,7 +6,6 @@
       - head
       - stable-11
       - stable-10
-      - stable-9
     jobs:
       - 'FreeBSD-{branch}-{arch}-ci'
 
@@ -18,7 +17,6 @@
       - head
       - stable-11
       - stable-10
-      - stable-9
     jobs:
       - 'FreeBSD-{branch}-{arch}-ci'
 
