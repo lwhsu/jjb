@@ -40,7 +40,8 @@
       - head
       - stable-11
     jobs:
-      - 'FreeBSD-{branch}-{arch}-ci'
+      - 'FreeBSD-{branch}-{arch}-ci':
+          node: jailer_slow
 
 - job:
     name: FreeBSD-head-scan_build

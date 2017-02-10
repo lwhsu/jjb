@@ -43,7 +43,7 @@
 - job-template:
     defaults: global
     name: 'FreeBSD-{branch}-{arch}-LINT'
-    node: jailer
+    node: jailer_slow
     scm:
       - 'FreeBSD-src-{branch}'
 #    triggers:
@@ -71,7 +71,7 @@
 - job-template:
     defaults: global
     name: 'FreeBSD-{branch}-{arch}-images'
-    node: jailer
+    node: jailer_slow
     parameters:
       - string:
           name: SVN_REVISION
