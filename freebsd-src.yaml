@@ -32,6 +32,16 @@
     jobs:
       - 'FreeBSD-{branch}-{arch}-ci'
 
+- project:
+    name: FreeBSD-riscv64
+    arch:
+      - riscv64
+    branch:
+      - head
+      - stable-11
+    jobs:
+      - 'FreeBSD-{branch}-{arch}-ci'
+
 - job:
     name: FreeBSD-head-scan_build
     defaults: global
