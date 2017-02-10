@@ -27,6 +27,13 @@
             - GNU C Compiler 4 (gcc)
 
 - publisher:
+    name: scan-gcc-warnings
+    publishers:
+      - warnings:
+          console-log-parsers:
+            - GNU Make + GNU C Compiler (gcc)
+
+- publisher:
     name: publish-junit-results
     publishers:
       - junit:
