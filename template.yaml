@@ -72,6 +72,8 @@
     defaults: global
     name: 'FreeBSD-{branch}-{arch}-images'
     node: jailer_slow
+    scm:
+      - 'FreeBSD-src-{branch}-empty'
     parameters:
       - string:
           name: SVN_REVISION
@@ -103,6 +105,8 @@
     defaults: global
     name: 'FreeBSD-{branch}-{arch}-testvm'
     node: jailer_fast
+    scm:
+      - 'FreeBSD-src-{branch}-empty'
     parameters:
       - string:
           name: SVN_REVISION
@@ -141,7 +145,7 @@
     name: 'FreeBSD-{branch}-{arch}-test'
     node: bhyve_host
     scm:
-      - 'FreeBSD-src-{branch}'
+      - 'FreeBSD-src-{branch}-empty'
     properties:
       - inject:
           properties-content: |
