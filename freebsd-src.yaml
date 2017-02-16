@@ -7,7 +7,8 @@
       - stable-11
       - stable-10
     jobs:
-      - 'FreeBSD-{branch}-{arch}-ci'
+      - 'FreeBSD-{branch}-{arch}-ci':
+          warnscanner: clang
 
 - project:
     name: FreeBSD-i386
@@ -18,7 +19,8 @@
       - stable-11
       - stable-10
     jobs:
-      - 'FreeBSD-{branch}-{arch}-ci'
+      - 'FreeBSD-{branch}-{arch}-ci':
+          warnscanner: clang
 
 - project:
     name: FreeBSD-arm64
@@ -28,7 +30,8 @@
       - head
       - stable-11
     jobs:
-      - 'FreeBSD-{branch}-{arch}-ci'
+      - 'FreeBSD-{branch}-{arch}-ci':
+          warnscanner: clang
 
 - project:
     name: FreeBSD-riscv64
@@ -39,7 +42,7 @@
       - stable-11
     jobs:
       - 'FreeBSD-{branch}-{arch}-ci':
-          node: jailer_slow
+          warnscanner: gcc
 
 - job:
     name: FreeBSD-head-scan_build

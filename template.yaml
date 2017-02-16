@@ -17,7 +17,7 @@
       - execute-in-jail
     publishers:
       - add-svn-revision-shorttext
-      - scan-clang-warnings
+      - scan-{warnscanner}-warnings
       - ftp:
           site: 'artifact.ci.freebsd.org'
           target: 'snapshot'
