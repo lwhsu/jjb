@@ -159,7 +159,6 @@
           name: SVN_REVISION
           description: "Subversion revision"
     builders:
-      #- cleanup-workspace
       - checkout-scripts
       - execute-job-build-script
     publishers:
