@@ -42,8 +42,10 @@
           type: absolute
 
 - job-template:
+    disable_job_LINT: false
     defaults: global
     name: 'FreeBSD-{branch}-{arch}-LINT'
+    disabled: '{disable_job_LINT}'
     node: jailer_slow
     scm:
       - 'FreeBSD-src-{branch}'
@@ -71,8 +73,10 @@
           type: absolute
 
 - job-template:
+    disable_job_images: false
     defaults: global
     name: 'FreeBSD-{branch}-{arch}-images'
+    disabled: '{disable_job_images}'
     node: jailer_slow
     scm:
       - 'FreeBSD-src-{branch}-empty'

@@ -43,6 +43,8 @@
     jobs:
       - 'FreeBSD-{branch}-{arch}-ci':
           warnscanner: gcc
+          disable_job_images: true
+          disable_job_LINT: true
 
 - job:
     name: FreeBSD-head-scan_build
