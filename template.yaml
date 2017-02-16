@@ -16,6 +16,7 @@
       - setup-jail
       - execute-in-jail
     publishers:
+      - add-svn-revision-shorttext
       - scan-clang-warnings
       - ftp:
           site: 'artifact.ci.freebsd.org'
@@ -57,6 +58,7 @@
       - setup-jail
       - execute-in-jail
     publishers:
+      - add-svn-revision-shorttext
       - scan-clang-warnings
       - clean-jail
 #      - mail-notify
@@ -87,6 +89,7 @@
       - setup-jail
       - execute-in-jail
     publishers:
+      - add-svn-revision-shorttext
       - ftp:
           site: 'artifact.ci.freebsd.org'
           target: 'snapshot'
@@ -120,6 +123,7 @@
       - setup-jail
       - execute-in-jail
     publishers:
+      - add-svn-revision-shorttext
       - ftp:
           site: 'artifact.ci.freebsd.org'
           target: 'snapshot'
@@ -159,6 +163,7 @@
       - checkout-scripts
       - execute-job-build-script
     publishers:
+      - add-svn-revision-shorttext
       - publish-junit-results
 #      - mail-notify
     wrappers:
