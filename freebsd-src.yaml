@@ -52,6 +52,8 @@
     node: jailer_slow
     scm:
       - FreeBSD-src-head
+    triggers:
+      - timed: '@daily'
     builders:
       - checkout-scripts
       - setup-jail
