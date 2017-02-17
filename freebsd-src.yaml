@@ -57,7 +57,13 @@
       - setup-jail
       - execute-in-jail
     publishers:
+      - add-svn-revision-shorttext
       - clean-jail
       - publish-clang-scan-build-results
     wrappers:
       - timestamps
+      - timeout:
+          timeout: 240
+          timeout-var: 'BUILD_TIMEOUT'
+          fail: true
+          type: absolute
