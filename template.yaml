@@ -12,11 +12,11 @@
             FBSD_BRANCH={branch}
             MOUNT_REPO=src
     builders:
+      - add-svn-revision-description
       - checkout-scripts
       - setup-jail
       - execute-in-jail
     publishers:
-      - add-svn-revision-shorttext
       - scan-{warnscanner}-warnings
       - ftp:
           site: 'artifact.ci.freebsd.org'
@@ -54,11 +54,11 @@
           properties-content: |
             MOUNT_REPO=src
     builders:
+      - add-svn-revision-description
       - checkout-scripts
       - setup-jail
       - execute-in-jail
     publishers:
-      - add-svn-revision-shorttext
       - scan-clang-warnings
       - clean-jail
 #      - mail-notify
@@ -87,11 +87,11 @@
           properties-content: |
             FBSD_BRANCH={branch}
     builders:
+      - add-svn-revision-description
       - checkout-scripts
       - setup-jail
       - execute-in-jail
     publishers:
-      - add-svn-revision-shorttext
       - ftp:
           site: 'artifact.ci.freebsd.org'
           target: 'snapshot'
@@ -121,11 +121,11 @@
           properties-content: |
             FBSD_BRANCH={branch}
     builders:
+      - add-svn-revision-description
       - checkout-scripts
       - setup-jail
       - execute-in-jail
     publishers:
-      - add-svn-revision-shorttext
       - ftp:
           site: 'artifact.ci.freebsd.org'
           target: 'snapshot'
@@ -161,10 +161,10 @@
           name: SVN_REVISION
           description: "Subversion revision"
     builders:
+      - add-svn-revision-description
       - checkout-scripts
       - execute-job-build-script
     publishers:
-      - add-svn-revision-shorttext
       - publish-junit-results
 #      - mail-notify
     wrappers:
