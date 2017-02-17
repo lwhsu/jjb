@@ -4,8 +4,8 @@
     node: jailer_fast
     scm:
       - 'FreeBSD-src-{branch}'
-#    triggers:
-#      - pollscm: H H/2 * * *
+    triggers:
+      - pollscm: H/5 * * * *
     properties:
       - inject:
           properties-content: |
