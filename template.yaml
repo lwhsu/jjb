@@ -1,4 +1,5 @@
 - job-template:
+    artifact_path: src/release/artifact
     defaults: global
     name: 'FreeBSD-{branch}-{arch}-build'
     node: jailer_fast
@@ -21,8 +22,8 @@
       - ftp:
           site: 'artifact.ci.freebsd.org'
           target: 'snapshot'
-          source: 'src/release/artifact/**'
-          remove-prefix: 'src/release/artifact'
+          source: '{artifact_path}/**'
+          remove-prefix: '{artifact_path}'
       - clean-jail
 #      - mail-notify
       - trigger-parameterized-builds:
@@ -72,6 +73,7 @@
 
 - job-template:
     disable_job_images: false
+    artifact_path: src/release/artifact
     defaults: global
     name: 'FreeBSD-{branch}-{arch}-images'
     disabled: '{disable_job_images}'
@@ -95,8 +97,8 @@
       - ftp:
           site: 'artifact.ci.freebsd.org'
           target: 'snapshot'
-          source: 'artifact/**'
-          remove-prefix: 'artifact'
+          source: '{artifact_path}/**'
+          remove-prefix: '{artifact_path}'
       - clean-jail
     wrappers:
       - timestamps
@@ -107,6 +109,7 @@
           type: absolute
 
 - job-template:
+    artifact_path: src/release/artifact
     defaults: global
     name: 'FreeBSD-{branch}-{arch}-testvm'
     node: jailer_fast
@@ -129,8 +132,8 @@
       - ftp:
           site: 'artifact.ci.freebsd.org'
           target: 'snapshot'
-          source: 'artifact/**'
-          remove-prefix: 'artifact'
+          source: '{artifact_path}/**'
+          remove-prefix: '{artifact_path}'
       - clean-jail
       - trigger-parameterized-builds:
         - project:

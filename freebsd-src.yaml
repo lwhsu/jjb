@@ -45,6 +45,7 @@
           warnscanner: gcc
           disable_job_images: true
           disable_job_LINT: true
+          artifact_path: artifact
 
 - job:
     name: FreeBSD-head-scan_build
