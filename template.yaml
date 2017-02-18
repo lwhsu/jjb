@@ -222,6 +222,11 @@
        - 'FreeBSD-{branch}-{arch}-test'
 
 - job-group:
+    name: 'FreeBSD-{branch}-arm64-ci'
+    jobs:
+       - 'FreeBSD-{branch}-{arch}-build'
+
+- job-group:
     name: 'FreeBSD-{branch}-riscv64-ci'
     jobs:
        - 'FreeBSD-{branch}-{arch}-build'

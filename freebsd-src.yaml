@@ -30,7 +30,7 @@
       - head
       - stable-11
     jobs:
-      - 'FreeBSD-{branch}-{arch}-ci':
+      - 'FreeBSD-{branch}-arm64-ci':
           warnscanner: clang
 
 - project:
