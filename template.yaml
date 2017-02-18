@@ -6,7 +6,8 @@
     scm:
       - 'FreeBSD-src-{branch}'
     triggers:
-      - pollscm: H/5 * * * *
+      - pollscm:
+          cron: "H/5 * * * *"
     properties:
       - inject:
           properties-content: |
