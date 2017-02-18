@@ -73,7 +73,7 @@
 
 - job-template:
     disable_job_images: false
-    artifact_path: src/release/artifact
+    artifact_path: artifact
     defaults: global
     name: 'FreeBSD-{branch}-{arch}-images'
     disabled: '{disable_job_images}'
@@ -109,7 +109,7 @@
           type: absolute
 
 - job-template:
-    artifact_path: src/release/artifact
+    artifact_path: artifact
     defaults: global
     name: 'FreeBSD-{branch}-{arch}-testvm'
     node: jailer_fast
