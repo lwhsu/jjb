@@ -51,6 +51,10 @@
     node: jailer_slow
     scm:
       - 'FreeBSD-src-{branch}'
+    parameters:
+      - string:
+          name: SVN_REVISION
+          description: "Subversion revision"
     properties:
       - inject:
           properties-content: |
