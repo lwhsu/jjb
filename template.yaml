@@ -178,6 +178,35 @@
           fail: true
           type: absolute
 
+- job-template:
+    defaults: global
+    name: 'FreeBSD-{branch}-riscv64-test'
+    node: jailer_slow
+    scm:
+      - 'FreeBSD-src-{branch}-empty'
+    parameters:
+      - string:
+          name: SVN_REVISION
+          description: "Subversion revision"
+    properties:
+      - inject:
+          properties-content: |
+            FBSD_BRANCH={branch}
+    builders:
+      - add-svn-revision-description
+      - checkout-scripts
+      - setup-jail
+      - execute-in-jail
+    publishers:
+      - clean-jail
+    wrappers:
+      - timestamps
+      - timeout:
+          timeout: 30
+          timeout-var: 'BUILD_TIMEOUT'
+          fail: true
+          type: absolute
+
 - job-group:
     name: 'FreeBSD-{branch}-{arch}-ci'
     jobs:
@@ -186,3 +215,10 @@
        - 'FreeBSD-{branch}-{arch}-LINT'
        - 'FreeBSD-{branch}-{arch}-testvm'
        - 'FreeBSD-{branch}-{arch}-test'
+
+- job-group:
+    name: 'FreeBSD-{branch}-riscv64-ci'
+    jobs:
+       - 'FreeBSD-{branch}-{arch}-build'
+       - 'FreeBSD-{branch}-{arch}-testvm'
+       - 'FreeBSD-{branch}-riscv64-test'
