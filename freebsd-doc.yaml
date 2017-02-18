@@ -35,6 +35,8 @@
       - string:
           name: SVN_REVISION
           description: "Subversion revision"
+    properties:
+      - inject
     builders:
       - checkout-scripts
       - setup-jail
