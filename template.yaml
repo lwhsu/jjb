@@ -1,7 +1,7 @@
 - job-template:
     artifact_path: src/release/artifact
     defaults: global
-    name: 'FreeBSD-{branch}-{arch}-build'
+    name: 'FreeBSD-{branch}-{target_arch}-build'
     node: jailer_fast
     scm:
       - 'FreeBSD-src-{branch}'
@@ -12,6 +12,9 @@
       - inject:
           properties-content: |
             FBSD_BRANCH={branch}
+            FBSD_TARGET={target}
+            FBSD_TARGET_ARCH={target_arch}
+            LINK_TYPE=latest
             MOUNT_REPO=src
     builders:
       - add-svn-revision-description
@@ -29,9 +32,9 @@
 #      - mail-notify
       - trigger-parameterized-builds:
         - project:
-            - 'FreeBSD-{branch}-{arch}-images'
-            - 'FreeBSD-{branch}-{arch}-testvm'
-            - 'FreeBSD-{branch}-{arch}-LINT'
+            - 'FreeBSD-{branch}-{target_arch}-images'
+            - 'FreeBSD-{branch}-{target_arch}-testvm'
+            - 'FreeBSD-{branch}-{target_arch}-LINT'
           condition: SUCCESS
           svn-revision: true
           property-file: trigger.property
@@ -42,11 +45,12 @@
           timeout-var: 'BUILD_TIMEOUT'
           fail: true
           type: absolute
+      - bind-artifact-credential
 
 - job-template:
     disable_job_LINT: false
     defaults: global
-    name: 'FreeBSD-{branch}-{arch}-LINT'
+    name: 'FreeBSD-{branch}-{target_arch}-LINT'
     disabled: '{disable_job_LINT}'
     node: jailer_slow
     scm:
@@ -80,7 +84,7 @@
     disable_job_images: false
     artifact_path: artifact
     defaults: global
-    name: 'FreeBSD-{branch}-{arch}-images'
+    name: 'FreeBSD-{branch}-{target_arch}-images'
     disabled: '{disable_job_images}'
     node: jailer_slow
     scm:
@@ -93,6 +97,9 @@
       - inject:
           properties-content: |
             FBSD_BRANCH={branch}
+            FBSD_TARGET={target}
+            FBSD_TARGET_ARCH={target_arch}
+            LINK_TYPE=latest_vm
     builders:
       - add-svn-revision-description
       - checkout-scripts
@@ -112,11 +119,12 @@
           timeout-var: 'BUILD_TIMEOUT'
           fail: true
           type: absolute
+      - bind-artifact-credential
 
 - job-template:
     artifact_path: artifact
     defaults: global
-    name: 'FreeBSD-{branch}-{arch}-testvm'
+    name: 'FreeBSD-{branch}-{target_arch}-testvm'
     node: jailer_fast
     scm:
       - 'FreeBSD-src-{branch}-empty'
@@ -142,7 +150,7 @@
       - clean-jail
       - trigger-parameterized-builds:
         - project:
-            - 'FreeBSD-{branch}-{arch}-test'
+            - 'FreeBSD-{branch}-{target_arch}-test'
           condition: SUCCESS
           svn-revision: true
           property-file: trigger.property
@@ -156,7 +164,7 @@
 
 - job-template:
     defaults: global
-    name: 'FreeBSD-{branch}-{arch}-test'
+    name: 'FreeBSD-{branch}-{target_arch}-test'
     node: bhyve_host
     scm:
       - 'FreeBSD-src-{branch}-empty'
@@ -164,6 +172,9 @@
       - inject:
           properties-content: |
             FBSD_BRANCH={branch}
+            FBSD_TARGET={target}
+            FBSD_TARGET_ARCH={target_arch}
+            LINK_TYPE=tested
     parameters:
       - string:
           name: SVN_REVISION
@@ -182,6 +193,7 @@
           timeout-var: 'BUILD_TIMEOUT'
           fail: true
           type: absolute
+      - bind-artifact-credential
 
 - job-template:
     defaults: global
@@ -197,6 +209,9 @@
       - inject:
           properties-content: |
             FBSD_BRANCH={branch}
+            FBSD_TARGET={target}
+            FBSD_TARGET_ARCH={target_arch}
+            LINK_TYPE=tested
     builders:
       - add-svn-revision-description
       - checkout-scripts
@@ -211,24 +226,25 @@
           timeout-var: 'BUILD_TIMEOUT'
           fail: true
           type: absolute
+      - bind-artifact-credential
 
 - job-group:
-    name: 'FreeBSD-{branch}-{arch}-ci'
+    name: 'FreeBSD-{branch}-{target_arch}-ci'
     jobs:
-       - 'FreeBSD-{branch}-{arch}-build'
-       - 'FreeBSD-{branch}-{arch}-images'
-       - 'FreeBSD-{branch}-{arch}-LINT'
-       - 'FreeBSD-{branch}-{arch}-testvm'
-       - 'FreeBSD-{branch}-{arch}-test'
+       - 'FreeBSD-{branch}-{target_arch}-build'
+       - 'FreeBSD-{branch}-{target_arch}-images'
+       - 'FreeBSD-{branch}-{target_arch}-LINT'
+       - 'FreeBSD-{branch}-{target_arch}-testvm'
+       - 'FreeBSD-{branch}-{target_arch}-test'
 
 - job-group:
-    name: 'FreeBSD-{branch}-arm64-ci'
+    name: 'FreeBSD-{branch}-aarch64-ci'
     jobs:
-       - 'FreeBSD-{branch}-{arch}-build'
+       - 'FreeBSD-{branch}-{target_arch}-build'
 
 - job-group:
     name: 'FreeBSD-{branch}-riscv64-ci'
     jobs:
-       - 'FreeBSD-{branch}-{arch}-build'
-       - 'FreeBSD-{branch}-{arch}-testvm'
+       - 'FreeBSD-{branch}-{target_arch}-build'
+       - 'FreeBSD-{branch}-{target_arch}-testvm'
        - 'FreeBSD-{branch}-riscv64-test'

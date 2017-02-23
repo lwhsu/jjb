@@ -1,47 +1,51 @@
 - project:
     name: FreeBSD-amd64
-    arch:
+    target_arch:
       - amd64
     branch:
       - head
       - stable-11
       - stable-10
     jobs:
-      - 'FreeBSD-{branch}-{arch}-ci':
+      - 'FreeBSD-{branch}-{target_arch}-ci':
+          target: amd64
           warnscanner: clang
 
 - project:
     name: FreeBSD-i386
-    arch:
+    target_arch:
       - i386
     branch:
       - head
       - stable-11
       - stable-10
     jobs:
-      - 'FreeBSD-{branch}-{arch}-ci':
+      - 'FreeBSD-{branch}-{target_arch}-ci':
+          target: i386
           warnscanner: clang
 
 - project:
-    name: FreeBSD-arm64
-    arch:
-      - arm64
+    name: FreeBSD-aarch64
+    target_arch:
+      - aarch64
     branch:
       - head
       - stable-11
     jobs:
-      - 'FreeBSD-{branch}-arm64-ci':
+      - 'FreeBSD-{branch}-aarch64-ci':
+          target: arm64
           warnscanner: clang
 
 - project:
     name: FreeBSD-riscv64
-    arch:
+    target_arch:
       - riscv64
     branch:
       - head
       - stable-11
     jobs:
       - 'FreeBSD-{branch}-riscv64-ci':
+          target: riscv
           warnscanner: gcc
           disable_job_images: true
           disable_job_LINT: true
