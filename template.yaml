@@ -28,6 +28,7 @@
           target: 'snapshot'
           source: '{artifact_path}/**'
           remove-prefix: '{artifact_path}'
+      - make-symlink
       - clean-jail
 #      - mail-notify
       - trigger-parameterized-builds:
@@ -111,6 +112,7 @@
           target: 'snapshot'
           source: '{artifact_path}/**'
           remove-prefix: '{artifact_path}'
+      - make-symlink
       - clean-jail
     wrappers:
       - timestamps
@@ -184,6 +186,7 @@
       - checkout-scripts
       - execute-job-build-script
     publishers:
+      - make-symlink
       - publish-junit-results
 #      - mail-notify
     wrappers:

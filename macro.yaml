@@ -70,3 +70,13 @@
               credential-id: artifact-credential
               username: ARTIFACT_CRED_USER
               password: ARTIFACT_CRED_PASS
+
+- publisher:
+    name: make-symlink
+    publishers:
+      - postbuildscript:
+          builders:
+            - system-groovy:
+                file: freebsd-ci/artifact/post-link.groovy
+          script-only-if-succeeded: False
+          script-only-if-failed: False
