@@ -61,3 +61,12 @@
     publishers:
       - groovy-postbuild:
           script: manager.addShortText("r" + manager.envVars['SVN_REVISION'], "royalblue", "transparent", "0px", "transparent")
+
+- wrapper:
+    name: bind-artifact-credential
+    wrappers:
+      - credentials-binding:
+          - username-password-separated:
+              credential-id: artifact-credential
+              username: ARTIFACT_CRED_USER
+              password: ARTIFACT_CRED_PASS
