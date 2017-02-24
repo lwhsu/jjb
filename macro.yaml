@@ -76,7 +76,6 @@
     publishers:
       - postbuildscript:
           builders:
-            - system-groovy:
-                file: freebsd-ci/artifact/post-link.groovy
-          script-only-if-succeeded: False
+            - shell: ./freebsd-ci/artifact/post-link.py
+          script-only-if-succeeded: True
           script-only-if-failed: False
