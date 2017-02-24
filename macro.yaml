@@ -79,3 +79,4 @@
             - shell: ./freebsd-ci/artifact/post-link.py
           script-only-if-succeeded: True
           script-only-if-failed: False
+          mark-unstable-if-failed: True
