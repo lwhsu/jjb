@@ -176,7 +176,7 @@
             FBSD_BRANCH={branch}
             FBSD_TARGET={target}
             FBSD_TARGET_ARCH={target_arch}
-            LINK_TYPE=tested
+            LINK_TYPE=latest_tested
     parameters:
       - string:
           name: SVN_REVISION
@@ -214,7 +214,7 @@
             FBSD_BRANCH={branch}
             FBSD_TARGET={target}
             FBSD_TARGET_ARCH={target_arch}
-            LINK_TYPE=tested
+            LINK_TYPE=latest_tested
     builders:
       - add-svn-revision-description
       - checkout-scripts
