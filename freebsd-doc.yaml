@@ -8,6 +8,7 @@
       - pollscm:
           cron: "H/5 * * * *"
     builders:
+      - add-svn-revision-description
       - checkout-scripts
       - setup-jail
       - execute-in-jail
@@ -38,6 +39,7 @@
     properties:
       - inject
     builders:
+      - add-svn-revision-description
       - checkout-scripts
       - setup-jail
       - execute-in-jail
