@@ -56,12 +56,6 @@
     publishers:
       - scan-build
 
-- publisher:
-    name: add-svn-revision-shorttext
-    publishers:
-      - groovy-postbuild:
-          script: manager.addShortText("r" + manager.envVars['SVN_REVISION'], "royalblue", "transparent", "0px", "transparent")
-
 - wrapper:
     name: bind-artifact-credential
     wrappers:
