@@ -1,8 +1,9 @@
 - job-template:
     artifact_path: src/release/artifact
     defaults: global
+    node_job_build: jailer_fast
     name: 'FreeBSD-{branch}-{target_arch}-build'
-    node: jailer_fast
+    node: '{node_job_build}'
     scm:
       - 'FreeBSD-src-{branch}'
     triggers:
